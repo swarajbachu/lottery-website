@@ -32,6 +32,10 @@ export interface DataTableProps<TData, TValue> {
   data: TData[]
 }
 
+function checkEven(id:number){
+    return id % 2 === 0
+}
+
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -52,7 +56,9 @@ export function DataTable<TData, TValue>({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} 
+                    className="bg-slate-200"
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -67,10 +73,11 @@ export function DataTable<TData, TValue>({
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table.getRowModel().rows.map((row,index) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className={`${checkEven(index) ? "bg-slate-100" : "bg-slate-50"}`}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
