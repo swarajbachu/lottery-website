@@ -48,7 +48,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="relative pb-14 my-5">
+    <div className="relative pb-14 my-5 scale-75 sm:scale-100">
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -57,7 +57,7 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} 
-                    className="bg-slate-200"
+                    className="bg-[#F6EDAF]"
                     >
                       {header.isPlaceholder
                         ? null
@@ -77,10 +77,10 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className={`${checkEven(index) ? "bg-slate-100" : "bg-slate-50"}`}
+                  className={`${checkEven(index) ? "bg-[#D8CE94]" : "bg-[#F6EDAF]"} text-black`}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className="text-black">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
